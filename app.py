@@ -19,8 +19,8 @@ main_router.include_router(salary_router)
 dp.include_router(main_router)
 
 @main_router.message(CommandStart())
-async def command_start_handler(message: Message) -> None:
-   await message.answer(f"Hello, {markdown.hbold(message.from_user.full_name)}!")
+async def command_start_handler(msg: Message) -> None:
+   await msg.answer(f"Hello, {markdown.hbold(msg.from_user.full_name)}!")
 
 
 async def main() -> None:
