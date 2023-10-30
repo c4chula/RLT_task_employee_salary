@@ -1,15 +1,15 @@
 from datetime import datetime
 from enum import StrEnum
 from typing import List
-import logging
 
 from pydantic import BaseModel
 
 
-# class SalaryFiltersGroupTypeEnum(StrEnum):
-#     month = "month"
-#     day = "day"
-#     hour = "hour"
+class SalaryFiltersGroupTypeEnum(StrEnum):
+    year = "year"
+    month = "month"
+    day = "day"
+    hour = "hour"
 
 
 class SalaryFilters(BaseModel):

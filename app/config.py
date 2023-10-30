@@ -7,6 +7,7 @@ class MongoDBSettings(BaseSettings):
     DB_HOST: str
     DB_PORT: str
     DB_NAME: str
+    DB_COLLECTION_NAME: str
     DB_USERNAME: str
     DB_PASSWORD: str
 
