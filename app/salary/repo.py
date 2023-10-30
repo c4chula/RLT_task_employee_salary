@@ -4,11 +4,9 @@ from motor.motor_asyncio import AsyncIOMotorClientSession
 
 from app.config import cfg
 from app.helpers import get_ordered_types
-from collections import OrderedDict
-
-from pprint import pprint
 
 if TYPE_CHECKING:
+    from collections import OrderedDict
     from datetime import datetime
 
 
@@ -28,8 +26,6 @@ class SalaryRepo:
         dt_from: datetime = filters.get("dt_from", None)
         dt_upto: datetime = filters.get("dt_upto", None)
         group_type: datetime = filters.get("group_type", None)
-
-
 
         group_date_parts: OrderedDict[str, Dict[str, str]] = {}
 
