@@ -20,5 +20,7 @@ async def get_agregation_data(msg: Message) -> None:
         logging.exception("json is not valid")
         await msg.answer(f"{msg.text}\n\nIs not valid!")
 
+    logging.info("im also here")
     result: SalaryAggregationResponse = await SalaryService().get_salary_aggregation(salary_filters)
+    logging.info("im here")
     await msg.answer(f"{result}")
