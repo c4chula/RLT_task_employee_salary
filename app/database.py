@@ -1,5 +1,6 @@
 from motor.motor_asyncio import AsyncIOMotorClient
-from app.config import Settings
 
-client = AsyncIOMotorClient(Settings().get_db_uri)
+from app.config import cfg
+
+client = AsyncIOMotorClient(cfg.get_db_uri())
 
