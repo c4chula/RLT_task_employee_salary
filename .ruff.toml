@@ -61,7 +61,7 @@ ignore = [
     "PT019",  # Fixture without value is injected as parameter, use @pytest.mark.usefixtures instead
     "SIM108"  # Use ternary operator instead of if-else block (ternaries lie to coverage)
 ]
-extend-exclude = ["migrations", "**/*.py"]
+extend-exclude = ["migrations", "**/__init__.py"]
 
 [per-file-ignores]
 "tests/*" = [
