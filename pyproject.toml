@@ -10,6 +10,7 @@ python = "^3.11"
 aiogram = "^3.1.1"
 motor = "^3.3.1"
 pydantic-settings = "^2.0.3"
+python-dateutil = "^2.8.2"
 
 
 [build-system]
