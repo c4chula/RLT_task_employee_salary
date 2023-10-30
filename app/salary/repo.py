@@ -1,3 +1,4 @@
+import pprint
 from typing import TYPE_CHECKING, Any, Dict, Sequence
 
 from motor.motor_asyncio import AsyncIOMotorClientSession
@@ -37,16 +38,16 @@ class SalaryRepo:
         cursor = self.db_session.client[cfg.DB_NAME][cfg.DB_COLLECTION_NAME].aggregate(
             [
                 {
-                    "$match": {
-                        "dt": {"$gte": dt_from, "$lte": dt_upto},
-                    },
-                },
-                {
                     "$group": {
                         "_id": {
                             "$dateFromParts": group_date_parts,
                         },
-                        "count": {"$sum": "$value"},
+                        "sum": {"$sum": "$value"},
+                    },
+                },
+                {
+                    "$match": {
+                        "_id": {"$gte": dt_from, "$lt": dt_upto},
                     },
                 },
                 {
@@ -54,4 +55,5 @@ class SalaryRepo:
                 },
             ],
         )
+
         return await cursor.to_list(None)

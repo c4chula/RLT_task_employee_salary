@@ -1,5 +1,7 @@
 
+
 from app.database import MotorAsyncSessionfactory
+from app.helpers import get_list_of_daterange
 from app.salary.repo import SalaryRepo
 from app.salary.schema import SalaryAggregationResponse, SalaryFilters
 
@@ -19,8 +21,17 @@ class SalaryService(MotorAsyncSessionfactory):
             group_type=schema.group_type,
         )
 
-        dataset = [item.get("count") for item in docs]
-        labels = [item.get("_id").isoformat() for item in docs]
+        labels = get_list_of_daterange(schema.group_type, schema.dt_from, schema.dt_upto)
+
+        dataset = []
+        i = j = 0
+        while j < len(labels):
+            if (i < len(docs) and docs[i].get("_id").isoformat() != labels[j]) or i >= len(docs):
+                dataset.append(0)
+            elif docs[i].get("_id").isoformat() == labels[j]:
+                dataset.append(docs[i].get("sum"))
+                i += 1
+            j += 1
 
         return SalaryAggregationResponse(
             dataset=dataset,
