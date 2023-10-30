@@ -22,4 +22,4 @@ async def get_agregation_data(msg: Message) -> Dict[str, List[Any]]:
     result: SalaryAggregationResponse = await SalaryService().get_salary_aggregation(
         salary_filters,
     )
-    await msg.answer(f"{result.model_dump()}")
+    await msg.answer(f"{result.model_dump_json()}")

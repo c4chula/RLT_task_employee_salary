@@ -7,7 +7,7 @@ def get_ordered_types(field_name: str) -> Dict[str, Dict[str, str]]:
         {
             "year": {"$year": field_name},
             "month": {"$month": field_name},
-            "day": {"$day": field_name},
+            "day": {"$dayOfMonth": field_name},
             "hour": {"$hour": field_name},
         },
     )
